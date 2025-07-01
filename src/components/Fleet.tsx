@@ -9,7 +9,7 @@ import vivaroImg from '../../assets/Vivaro.jpg';
 const Fleet = () => {
   const vehicles = [
     {
-      name: "5-Seater Saloon",
+      name: "5-Seater Premium Saloon",
       capacity: "Up to 5 passengers",
       description: "Perfect for business trips or small groups. Comfortable, professional, and efficient.",
       image: corollaImg,
@@ -23,7 +23,7 @@ const Fleet = () => {
       features: ["Extra luggage space", "Family-friendly", "All-weather capability"]
     },
     {
-      name: "9-Seater Comfort Minivan",
+      name: "9-Seater Touring Minivan",
       capacity: "Up to 9 passengers",
       description: "Ideal for large groups, corporate events, or extended family travel with maximum comfort.",
       image: vivaroImg,
