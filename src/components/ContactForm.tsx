@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Send, Phone, Mail, MapPin } from 'lucide-react';
+import { Send, Phone, Mail, MapPin, CheckCircle, AlertCircle } from 'lucide-react';
+import emailjs from '@emailjs/browser';
 
 const ContactForm = () => {
   const [formData, setFormData] = useState({
@@ -10,7 +11,7 @@ const ContactForm = () => {
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
   const [placeholderText, setPlaceholderText] = useState('');
   const [currentExampleIndex, setCurrentExampleIndex] = useState(0);
   const [isTyping, setIsTyping] = useState(false);
@@ -21,6 +22,11 @@ const ContactForm = () => {
     "Private day trip of London Central for 3 people on the 31st January...",
     "Trip from Bristol City Centre to London Central 1st April morning, return trip back to Bristol 4 April evening..."
   ];
+
+  // Initialize EmailJS
+  useEffect(() => {
+    emailjs.init("YOUR_PUBLIC_KEY"); // You'll need to replace this with your actual EmailJS public key
+  }, []);
 
   useEffect(() => {
     let typingTimer: NodeJS.Timeout;
@@ -34,7 +40,6 @@ const ContactForm = () => {
         typingTimer = setTimeout(() => typeText(text, index + 1), 50);
       } else {
         setIsTyping(false);
-        // Pause for 3 seconds before starting to clear
         pauseTimer = setTimeout(() => {
           clearText(text.length);
         }, 3000);
@@ -46,14 +51,12 @@ const ContactForm = () => {
         setPlaceholderText(placeholderExamples[currentExampleIndex].substring(0, length));
         typingTimer = setTimeout(() => clearText(length - 2), 30);
       } else {
-        // Move to next example after clearing
         cycleTimer = setTimeout(() => {
           setCurrentExampleIndex((prev) => (prev + 1) % placeholderExamples.length);
         }, 500);
       }
     };
 
-    // Start typing the current example
     typeText(placeholderExamples[currentExampleIndex]);
 
     return () => {
@@ -74,23 +77,61 @@ const ContactForm = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setSubmitStatus('idle');
     
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    
-    setIsSubmitting(false);
-    setIsSubmitted(true);
-    
-    // Reset form after 3 seconds
-    setTimeout(() => {
-      setIsSubmitted(false);
-      setFormData({
-        fullName: '',
-        passengers: '',
-        contactNumber: '',
-        journeyDetails: ''
-      });
-    }, 3000);
+    try {
+      // EmailJS template parameters
+      const templateParams = {
+        to_email: 'brabazoncars@gmail.com',
+        from_name: formData.fullName,
+        contact_number: formData.contactNumber,
+        passengers: formData.passengers,
+        journey_details: formData.journeyDetails,
+        reply_to: formData.contactNumber,
+        message: `
+New Quote Request from ${formData.fullName}
+
+Contact Number: ${formData.contactNumber}
+Number of Passengers: ${formData.passengers}
+
+Journey Details:
+${formData.journeyDetails}
+
+Please respond to this customer as soon as possible.
+        `
+      };
+
+      // Send email using EmailJS
+      await emailjs.send(
+        'YOUR_SERVICE_ID', // You'll need to replace this with your EmailJS service ID
+        'YOUR_TEMPLATE_ID', // You'll need to replace this with your EmailJS template ID
+        templateParams
+      );
+
+      setSubmitStatus('success');
+      
+      // Reset form after 3 seconds
+      setTimeout(() => {
+        setSubmitStatus('idle');
+        setFormData({
+          fullName: '',
+          passengers: '',
+          contactNumber: '',
+          journeyDetails: ''
+        });
+      }, 3000);
+      
+    } catch (error) {
+      console.error('Error sending email:', error);
+      setSubmitStatus('error');
+      
+      // Reset error status after 5 seconds
+      setTimeout(() => {
+        setSubmitStatus('idle');
+      }, 5000);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -125,7 +166,7 @@ const ContactForm = () => {
                 <div>
                   <div className="font-semibold text-neutral-900">Phone</div>
                   <div className="text-neutral-600">+44 7872 910318</div>
-                  <div className="text-neutral-600">+44 7515 347262 </div>
+                  <div className="text-neutral-600">+44 7515 347262</div>
                 </div>
               </div>
 
@@ -157,6 +198,18 @@ const ContactForm = () => {
                 Don't hesitate to contact us anytime.
               </p>
             </div>
+
+            {/* Response Time Guarantee */}
+            <div className="bg-gradient-to-br from-green-50 to-emerald-50 p-6 rounded-2xl border border-green-100">
+              <h4 className="font-display font-bold text-neutral-900 mb-2 flex items-center">
+                <CheckCircle className="h-5 w-5 text-green-600 mr-2" />
+                Quick Response Guarantee
+              </h4>
+              <p className="text-neutral-700">
+                We respond to all quote requests within 1 hour during business hours, 
+                and within 3 hours outside business hours.
+              </p>
+            </div>
           </div>
 
           {/* Quote Form */}
@@ -173,7 +226,8 @@ const ContactForm = () => {
                   value={formData.fullName}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 border border-neutral-300 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200 bg-white/80 backdrop-blur-sm"
+                  disabled={isSubmitting}
+                  className="w-full px-4 py-3 border border-neutral-300 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200 bg-white/80 backdrop-blur-sm disabled:opacity-50 disabled:cursor-not-allowed"
                   placeholder="Enter your full name"
                 />
               </div>
@@ -188,7 +242,8 @@ const ContactForm = () => {
                   value={formData.passengers}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 border border-neutral-300 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200 bg-white/80 backdrop-blur-sm"
+                  disabled={isSubmitting}
+                  className="w-full px-4 py-3 border border-neutral-300 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200 bg-white/80 backdrop-blur-sm disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   <option value="">Select number of passengers</option>
                   <option value="1">1 Passenger</option>
@@ -214,7 +269,8 @@ const ContactForm = () => {
                   value={formData.contactNumber}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 border border-neutral-300 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200 bg-white/80 backdrop-blur-sm"
+                  disabled={isSubmitting}
+                  className="w-full px-4 py-3 border border-neutral-300 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200 bg-white/80 backdrop-blur-sm disabled:opacity-50 disabled:cursor-not-allowed"
                   placeholder="Enter your phone number"
                 />
               </div>
@@ -230,8 +286,9 @@ const ContactForm = () => {
                     value={formData.journeyDetails}
                     onChange={handleChange}
                     required
+                    disabled={isSubmitting}
                     rows={4}
-                    className="w-full px-4 py-3 border border-neutral-300 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200 resize-none bg-white/80 backdrop-blur-sm"
+                    className="w-full px-4 py-3 border border-neutral-300 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200 resize-none bg-white/80 backdrop-blur-sm disabled:opacity-50 disabled:cursor-not-allowed"
                     placeholder=""
                   />
                   {!formData.journeyDetails && (
@@ -245,19 +302,43 @@ const ContactForm = () => {
                 </div>
               </div>
 
+              {/* Status Messages */}
+              {submitStatus === 'success' && (
+                <div className="bg-green-50 border border-green-200 rounded-xl p-4 flex items-center space-x-3">
+                  <CheckCircle className="h-5 w-5 text-green-600 flex-shrink-0" />
+                  <div>
+                    <p className="text-green-800 font-medium">Quote request sent successfully!</p>
+                    <p className="text-green-700 text-sm">We'll get back to you within the hour.</p>
+                  </div>
+                </div>
+              )}
+
+              {submitStatus === 'error' && (
+                <div className="bg-red-50 border border-red-200 rounded-xl p-4 flex items-center space-x-3">
+                  <AlertCircle className="h-5 w-5 text-red-600 flex-shrink-0" />
+                  <div>
+                    <p className="text-red-800 font-medium">Failed to send quote request</p>
+                    <p className="text-red-700 text-sm">Please try again or call us directly.</p>
+                  </div>
+                </div>
+              )}
+
               <button
                 type="submit"
-                disabled={isSubmitting || isSubmitted}
+                disabled={isSubmitting || submitStatus === 'success'}
                 className={`w-full py-4 px-6 rounded-xl font-semibold text-lg transition-all duration-300 flex items-center justify-center space-x-2 button-hover ${
-                  isSubmitted
+                  submitStatus === 'success'
                     ? 'bg-green-500 text-white'
                     : isSubmitting
                     ? 'bg-neutral-400 text-white cursor-not-allowed'
                     : 'bg-gradient-to-r from-primary-500 to-primary-600 text-white hover:from-primary-600 hover:to-primary-700 transform hover:scale-105 shadow-lg hover:shadow-xl'
                 }`}
               >
-                {isSubmitted ? (
-                  <span>Quote Request Sent!</span>
+                {submitStatus === 'success' ? (
+                  <>
+                    <CheckCircle className="h-5 w-5" />
+                    <span>Quote Request Sent!</span>
+                  </>
                 ) : isSubmitting ? (
                   <>
                     <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white"></div>
@@ -270,7 +351,32 @@ const ContactForm = () => {
                   </>
                 )}
               </button>
+
+              {/* Form Footer */}
+              <div className="text-center text-sm text-neutral-600">
+                <p>By submitting this form, you agree to be contacted regarding your quote request.</p>
+              </div>
             </form>
+          </div>
+        </div>
+
+        {/* Setup Instructions */}
+        <div className="mt-16 bg-gradient-to-br from-amber-50 to-orange-50 border border-amber-200 rounded-2xl p-6">
+          <h4 className="font-display font-bold text-amber-900 mb-3 flex items-center">
+            <AlertCircle className="h-5 w-5 text-amber-600 mr-2" />
+            Email Setup Required
+          </h4>
+          <div className="text-amber-800 space-y-2">
+            <p>To make the contact form functional, you need to:</p>
+            <ol className="list-decimal list-inside space-y-1 ml-4">
+              <li>Create a free account at <a href="https://www.emailjs.com/" target="_blank" rel="noopener noreferrer" className="text-amber-900 underline hover:text-amber-700">EmailJS.com</a></li>
+              <li>Set up an email service (Gmail, Outlook, etc.)</li>
+              <li>Create an email template</li>
+              <li>Replace the placeholder IDs in the ContactForm component with your actual EmailJS credentials</li>
+            </ol>
+            <p className="text-sm mt-3">
+              <strong>Note:</strong> The form is fully functional but requires EmailJS configuration to send actual emails.
+            </p>
           </div>
         </div>
       </div>
