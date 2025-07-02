@@ -202,7 +202,7 @@ const Testimonials = () => {
           <div className="inline-flex items-center space-x-8 bg-white/80 backdrop-blur-sm px-8 py-6 rounded-2xl shadow-lg card-hover">
             <div className="text-center">
               <div className="text-3xl font-display font-bold bg-gradient-to-r from-primary-600 to-accent-600 bg-clip-text text-transparent">
-                500+
+                100+
               </div>
               <div className="text-sm text-neutral-600 font-medium">Happy Customers</div>
             </div>
