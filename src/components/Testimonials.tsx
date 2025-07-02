@@ -19,7 +19,7 @@ const Testimonials = () => {
       author: "Michael & Janet R.",
       rating: 5,
       service: "Private UK Tour",
-      location: "7-Day England Tour"
+      location: "2-Day England Tour"
     },
     {
       text: "Punctual, professional, and great value. I use them regularly for business trips and they never let me down. Highly recommended!",
