@@ -18,9 +18,15 @@ const Footer = () => {
           {/* Company Info */}
           <div className="col-span-2 md:col-span-1">
             <div className="flex items-center space-x-3 mb-6">
-              <div className="bg-gradient-to-br from-primary-500 to-primary-600 p-2 rounded-xl shadow-lg">
-                <Car className="h-6 w-6 text-white" />
-              </div>
+              <img 
+                src="/assets/Brabazon cars logo.png" 
+                alt="Brabazon Cars Logo"
+                className="h-12 w-12 object-contain"
+                style={{ 
+                  backgroundColor: 'transparent',
+                  mixBlendMode: 'normal'
+                }}
+              />
               <span className="text-xl font-display font-bold">Brabazon Cars</span>
             </div>
             <p className="text-neutral-300 mb-6 leading-relaxed">
@@ -81,11 +87,9 @@ const Footer = () => {
             <h3 className="text-lg font-display font-bold mb-6">Contact Us</h3>
             <div className="space-y-4">
               <div className="flex items-start space-x-3">
-                <Phone className="h-5 w-5 text-primary-400 mt-1" /> {/* Added mt-1 for better alignment */}
+                <Phone className="h-5 w-5 text-primary-400 mt-1" />
                 <div>
-                  {/* First phone number */}
                   <p className="text-neutral-300">+44 7872 910318</p>
-                  {/* Add your second phone number here */}
                   <p className="text-neutral-300">+44 7515 347262</p>
                 </div>
               </div>
