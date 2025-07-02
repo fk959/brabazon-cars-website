@@ -34,13 +34,6 @@ const Testimonials = () => {
       rating: 5,
       service: "Airport Transfer",
       location: "Bristol to Gatwick"
-    },
-    {
-      text: "We used Brabazon Cars for our wedding day transportation. They went above and beyond to make our special day perfect. Truly exceptional service!",
-      author: "James & Sophie M.",
-      rating: 5,
-      service: "Special Events",
-      location: "Wedding Transportation"
     }
   ];
 
