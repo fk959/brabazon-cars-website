@@ -13,6 +13,7 @@ const Fleet = () => {
       capacity: "Up to 5 passengers",
       description: "Perfect for business trips or small groups. Comfortable, professional, and efficient.",
       image: corollaImg,
+      altText: "Toyota Corolla 5-seater premium saloon car - professional private hire vehicle",
       features: ["Executive comfort", "Professional service", "Airport transfers"]
     },
     {
@@ -20,6 +21,7 @@ const Fleet = () => {
       capacity: "Up to 7 passengers",
       description: "Spacious and versatile for families or medium groups with extra luggage space.",
       image: galaxyImg,
+      altText: "Ford Galaxy 7-seater comfort SUV - spacious family vehicle for private hire",
       features: ["Extra luggage space", "Family-friendly", "All-weather capability"]
     },
     {
@@ -27,6 +29,7 @@ const Fleet = () => {
       capacity: "Up to 9 passengers",
       description: "Ideal for large groups, corporate events, or extended family travel with maximum comfort.",
       image: vivaroImg,
+      altText: "Vauxhall Vivaro 9-seater touring minivan - large group transportation vehicle",
       features: ["Large groups", "Corporate events", "Maximum comfort"]
     }
   ];
@@ -54,8 +57,9 @@ const Fleet = () => {
               <div className="aspect-w-16 aspect-h-10 overflow-hidden">
                 <img
                   src={vehicle.image}
-                  alt={vehicle.name}
+                  alt={vehicle.altText}
                   className="w-full h-48 object-cover fleet-image-hover"
+                  loading="lazy"
                 />
               </div>
               
