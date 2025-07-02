@@ -5,7 +5,7 @@ const Benefits = () => {
   const benefits = [
     {
       icon: <Clock className="h-12 w-12" />,
-      title: "Punctual & Reliable",
+      title: "Reliable & Punctual",
       description: "Always on time, every time. We track flights and monitor traffic to ensure you never miss your connection."
     },
     {
