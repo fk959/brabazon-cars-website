@@ -114,10 +114,10 @@ const Footer = () => {
               © {currentYear} Brabazon Cars. All rights reserved.
             </div>
             <div className="flex space-x-6 text-neutral-400">
-              <a href="#" className="hover:text-primary-400 transition-colors duration-200 text-hover">
+              <a href="/Privacy Policy.pdf" target="_blank" rel="noopener noreferrer" className="hover:text-primary-400 transition-colors duration-200 text-hover">
                 Privacy Policy
               </a>
-              <a href="#" className="hover:text-primary-400 transition-colors duration-200 text-hover">
+              <a href="/Terms and Conditions.pdf" target="_blank" rel="noopener noreferrer" className="hover:text-primary-400 transition-colors duration-200 text-hover">
                 Terms of Service
               </a>
             </div>
