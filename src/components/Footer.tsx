@@ -19,7 +19,7 @@ const Footer = () => {
           <div className="col-span-2 md:col-span-1">
             <div className="flex items-center space-x-3 mb-6">
               <img 
-                src="/assets/Brabazon cars logo.png" 
+                src="/assets/Brabazon-cars-logo.png" 
                 alt="Brabazon Cars Logo"
                 className="h-12 w-12 object-contain"
                 style={{ 
