@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Send, Phone, Mail, MapPin } from 'lucide-react';
+import emailjs from '@emailjs/browser';
 
 const ContactForm = () => {
   const [formData, setFormData] = useState({
@@ -11,6 +12,7 @@ const ContactForm = () => {
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
   const [placeholderText, setPlaceholderText] = useState('');
   const [currentExampleIndex, setCurrentExampleIndex] = useState(0);
   const [isTyping, setIsTyping] = useState(false);
@@ -71,23 +73,45 @@ const ContactForm = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    
-    setIsSubmitting(false);
-    setIsSubmitted(true);
-    
-    // Reset form after 3 seconds
-    setTimeout(() => {
-      setIsSubmitted(false);
-      setFormData({
-        fullName: '',
-        passengers: '',
-        contactNumber: '',
-        journeyDetails: ''
-      });
-    }, 3000);
+    setSubmitError(null);
+
+    try {
+      const templateParams = {
+        from_name: formData.fullName,
+        passengers: formData.passengers,
+        contact_number: formData.contactNumber,
+        journey_details: formData.journeyDetails,
+        to_email: 'jojimonuk@msn.com'
+      };
+
+      await emailjs.send(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+        templateParams,
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+      );
+
+      setIsSubmitting(false);
+      setIsSubmitted(true);
+
+      setTimeout(() => {
+        setIsSubmitted(false);
+        setFormData({
+          fullName: '',
+          passengers: '',
+          contactNumber: '',
+          journeyDetails: ''
+        });
+      }, 3000);
+    } catch (error) {
+      console.error('EmailJS Error:', error);
+      setIsSubmitting(false);
+      setSubmitError('Failed to send message. Please try again or contact us directly.');
+
+      setTimeout(() => {
+        setSubmitError(null);
+      }, 5000);
+    }
   };
 
   return (
@@ -241,6 +265,12 @@ const ContactForm = () => {
                   )}
                 </div>
               </div>
+
+              {submitError && (
+                <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-xl">
+                  {submitError}
+                </div>
+              )}
 
               <button
                 type="submit"
