@@ -1,5 +1,6 @@
 import React from 'react';
 import { ArrowRight, ChevronDown } from 'lucide-react';
+import mercedesvclassImg from '../../assets/Mercedes-V-Class.jpeg';
 
 const Hero = () => {
   const scrollToContact = () => {
@@ -15,7 +16,7 @@ const Hero = () => {
       <div 
         className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-10"
         style={{
-          backgroundImage: 'url("/assets/Mercedes-V-Class.jpeg")'
+          backgroundImage: `url(${mercedesvclassImg})`
         }}
       ></div>
       
