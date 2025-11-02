@@ -36,7 +36,7 @@ const Header = () => {
           {/* Logo Section */}
           <div className="flex items-center space-x-3 relative z-10">
             <img 
-              src="/assets/Brabazon cars logo.png" 
+              src="/assets/Brabazon-cars-logo.png" 
               alt="Brabazon Cars Logo"
               className={`object-contain transition-all duration-500 ease-in-out ${
                 isScrolled ? 'h-18 w-18' : 'h-24 w-24 md:h-30 md:w-30'
