@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
+import brabazonLogo from '../assets/Brabazon-cars-logo.png';
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -36,7 +37,7 @@ const Header = () => {
           {/* Logo Section */}
           <div className="flex items-center space-x-3 relative z-10">
             <img 
-              src="/assets/Brabazon-cars-logo.png" 
+              src={brabazonLogo} 
               alt="Brabazon Cars Logo"
               className={`object-contain transition-all duration-500 ease-in-out ${
                 isScrolled ? 'h-18 w-18' : 'h-24 w-24 md:h-30 md:w-30'
