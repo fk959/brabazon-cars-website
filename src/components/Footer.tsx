@@ -1,5 +1,6 @@
 import React from 'react';
 import { Car, Phone, Mail, MapPin, Clock } from 'lucide-react';
+import brabazonLogo from '../assets/Brabazon-cars-logo.png';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -19,7 +20,7 @@ const Footer = () => {
           <div className="col-span-2 md:col-span-1">
             <div className="flex items-center space-x-3 mb-6">
               <img 
-                src="/assets/Brabazon-cars-logo.png" 
+                src={brabazonLogo} 
                 alt="Brabazon Cars Logo"
                 className="h-12 w-12 object-contain"
                 style={{ 
