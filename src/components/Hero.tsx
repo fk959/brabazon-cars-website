@@ -28,10 +28,10 @@ const Hero = () => {
             <span className="block bg-gradient-to-r from-primary-600 to-accent-600 bg-clip-text text-transparent">
               Depart With Ease.
             </span>
-          </h1>
+          </h1> */}
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <div className="max-w-4xl mx-auto"> */} 
+        <div className="max-w-4xl mx-auto"> 
 
           {/* Real h1 for Google and Screen Readers */}
           <h1 className="sr-only">
