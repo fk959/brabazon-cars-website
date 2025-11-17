@@ -19,33 +19,15 @@ const Hero = () => {
           backgroundImage: `url(${mercedesvclassImg})`
         }}
       ></div>
-
-      {/* Below is the old code without the screen reader header */}
-      {/* <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <div className="max-w-4xl mx-auto">
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-display font-bold text-neutral-900 mb-6 leading-tight fade-in-up">
             Arrive In Style.
             <span className="block bg-gradient-to-r from-primary-600 to-accent-600 bg-clip-text text-transparent">
               Depart With Ease.
             </span>
-          </h1> */}
-
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <div className="max-w-4xl mx-auto"> 
-
-          {/* Real h1 for Google and Screen Readers */}
-          <h1 className="sr-only">
-            Bristol Airport Transfers & Private Hire Taxi
           </h1>
-
-          {/* Visual heading */}
-          <p className="text-4xl md:text-6xl lg:text-7xl font-display font-bold text-neutral-900 mb-6 leading-tight fade-in-up">
-            Arrive In Style.
-            <span className="block bg-gradient-to-r from-primary-600 to-accent-600 bg-clip-text text-transparent">
-              Depart With Ease.
-            </span>
-          </p>
-
           
           <p className="text-xl md:text-2xl text-neutral-700 mb-8 max-w-3xl mx-auto leading-relaxed fade-in-up stagger-1">
             Your trusted local private hire for seamless airport transfers, UK tours, and professional journeys.
