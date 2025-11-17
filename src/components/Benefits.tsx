@@ -42,8 +42,8 @@ const Benefits = () => {
             <div
               key={index}
               className={`flex flex-col lg:flex-row items-start lg:items-center gap-10 lg:gap-16 ${
-                index % 2 === 1 ? 'lg:flex-row-reverse' : ''
-              } ${index % 2 === 0 ? 'fade-in-left' : 'fade-in-right'}`}
+                index % 2 === 0 ? 'fade-in-left' : 'fade-in-right'
+              }`}
             >
               {/* Icon Section */}
               <div className="flex-shrink-0">
