@@ -26,7 +26,7 @@ const Benefits = () => {
   ];
 
   return (
-    <section className="py-20 bg-gradient-to-br from-primary-50 via-white to-accent-50">
+    <section className="py-20 bg-gradient-to-br from-primary-100 via-accent-50 to-primary-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-display font-bold text-neutral-900 mb-4 fade-in-up">
@@ -41,7 +41,7 @@ const Benefits = () => {
           {benefits.map((benefit, index) => (
             <div
               key={index}
-              className={`flex flex-col lg:flex-row items-center gap-12 ${
+              className={`flex flex-col lg:flex-row items-start lg:items-center gap-10 lg:gap-16 ${
                 index % 2 === 1 ? 'lg:flex-row-reverse' : ''
               } ${index % 2 === 0 ? 'fade-in-left' : 'fade-in-right'}`}
             >
@@ -60,14 +60,9 @@ const Benefits = () => {
                 <h3 className="text-2xl md:text-3xl font-display font-bold text-neutral-900 mb-4">
                   {benefit.title}
                 </h3>
-                <p className="text-lg text-neutral-600 leading-relaxed max-w-2xl">
+                <p className="text-lg text-neutral-600 leading-relaxed max-w-2xl mx-auto lg:mx-0">
                   {benefit.description}
                 </p>
-              </div>
-
-              {/* Decorative Element */}
-              <div className="hidden lg:block flex-shrink-0">
-                <div className="w-32 h-32 bg-gradient-to-br from-primary-100 to-accent-100 rounded-full opacity-20"></div>
               </div>
             </div>
           ))}
