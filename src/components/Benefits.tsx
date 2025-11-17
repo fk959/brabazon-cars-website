@@ -62,7 +62,9 @@ const Benefits = () => {
                 <h3 className="text-2xl md:text-3xl font-display font-bold text-neutral-900 mb-4">
                   {benefit.title}
                 </h3>
-                <p className="text-lg text-neutral-600 leading-relaxed max-w-2xl mx-auto lg:ml-0"> 
+                <p className={`text-lg text-neutral-600 leading-relaxed max-w-2xl mx-auto ${
+                  index % 2 === 1 ? 'lg:mr-0' : 'lg:ml-0'
+                }`}> 
                   {benefit.description}
                 </p>
               </div>
