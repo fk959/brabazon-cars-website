@@ -37,7 +37,7 @@ const Benefits = () => {
           </p>
         </div>
 
-        <div className="space-y-16 lg:px-32">
+        <div className="space-y-16 lg:px-16">
           {benefits.map((benefit, index) => (
             <div
               key={index}
