@@ -1,6 +1,6 @@
 import React from 'react';
 import { ArrowRight, ChevronDown } from 'lucide-react';
-import mercedesvclassImg from '../../assets/Mercedes-V-Class.jpeg';
+import mercedesvclassImg from '../assets/Mercedes-V-Class.jpeg';
 
 const Hero = () => {
   const scrollToContact = () => {
