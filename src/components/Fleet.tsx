@@ -2,9 +2,9 @@ import React from 'react';
 import { Users } from 'lucide-react';
 
 // Fix the import paths to correctly reference assets in the root directory
-import corollaImg from '../../assets/Corolla.jpg';
-import galaxyImg from '../../assets/Galaxy.jpg';
-import vivaroImg from '../../assets/Vivaro.jpg';
+import corollaImg from '../assets/Corolla.jpg';
+import galaxyImg from '../assets/Galaxy.jpg';
+import vivaroImg from '../assets/Vivaro.jpg';
 
 const Fleet = () => {
   const vehicles = [
