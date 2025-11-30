@@ -8,32 +8,53 @@ const Testimonials = () => {
   
   const testimonials = [
     {
-      text: "A fantastic and reliable service. The driver was professional and the vehicle was immaculate. Will definitely use again for our next holiday.",
-      author: "Sarah L.",
+      text: "Absolutely superb service. Our driver was waiting for us at Arrivals, helped with luggage, and the drive back to Bristol was smooth and comfortable. The car was spotless. Very reasonably priced.",
+      author: "Rajendra & Sriya K.",
       rating: 5,
       service: "Airport Transfer",
-      location: "Bristol to Heathrow"
+      location: "Heathrow to Bristol"
     },
     {
-      text: "Brabazon Cars made our UK tour absolutely perfect. The driver's local knowledge was incredible and the service was first-class throughout.",
-      author: "Michael & Janet R.",
+      text: "We booked Brabazon Cars for a 3-day tour of the Cotswolds and Bath. It was the highlight of our trip! The driver was knowledgeable, friendly and polite. Felt like a VIP experience from start to finish, for a not-so-VIP price.",
+      author: "Sophia L.",
       rating: 5,
       service: "Private UK Tour",
-      location: "2-Day England Tour"
+      location: "Cotswolds Tour"
     },
     {
-      text: "Punctual, professional, and great value. I use them regularly for business trips and they never let me down. Highly recommended!",
-      author: "David C.",
+      text: "Excellent service for our wedding guests. We arranged shuttles between the hotel and venue. Brabazon coordinated everything perfectly. Thank you for making our day run smoothly!",
+      author: "Peter & Molly P.",
       rating: 5,
-      service: "Local Journeys",
-      location: "Bristol Business Travel"
+      service: "Event Transport",
+      location: "Wedding Shuttle"
     },
     {
-      text: "Outstanding service from start to finish. The booking process was seamless and the driver arrived exactly on time. The vehicle was spotless and comfortable.",
-      author: "Emma T.",
+      text: "I use Brabazon for all my corporate travel now. Reliability is key for me, and they have never been late. Professional drivers, immaculately clean cars and easy booking. Highly recommended.",
+      author: "Richard R.",
+      rating: 5,
+      service: "Business Travel",
+      location: "Bristol Corporate Account"
+    },
+    {
+      text: "Saved us at the last minute when our train was cancelled. The driver arrived within 25 minutes and got us to Gatwick with time to spare. Stress-free and professional service.",
+      author: "Vinay C.",
       rating: 5,
       service: "Airport Transfer",
       location: "Bristol to Gatwick"
+    },
+    {
+      text: "Booked a 7-seater for our family holiday. Plenty of space for the kids and suitcases, super comfortable journey. The driver was very patient and safe. Great communication throughout the booking process and a great price for the service.",
+      author: "The Bhatt Family",
+      rating: 5,
+      service: "Group Transfer",
+      location: "Bristol to Stansted"
+    },
+    {
+      text: "Hired a driver to chauffeur the bride to her wedding reception. He was kind and very funny. Paid for a driver, got a friend in return!",
+      author: "Darren G.",
+      rating: 5,
+      service: "Chauffeur Service",
+      location: "Wedding Chaffeur"
     }
   ];
 
