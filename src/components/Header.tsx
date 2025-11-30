@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
-import brabazonLogo from '../../assets/Brabazon-cars-logo.png';
+import brabazonLogo from '../assets/Brabazon-cars-logo.png';
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
