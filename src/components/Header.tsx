@@ -40,7 +40,7 @@ const Header = () => {
               src={brabazonLogo} 
               alt="Brabazon Cars Logo"
               className={`object-contain transition-all duration-500 ease-in-out ${
-                isScrolled ? 'h-18 w-18' : 'h-24 w-24 md:h-30 md:w-30'
+                isScrolled ? 'h-12 w-12' : 'h-16 w-16 md:h-20 md:w-20'
               }`}
               style={{ 
                 backgroundColor: 'transparent',
