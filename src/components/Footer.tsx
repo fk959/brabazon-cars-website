@@ -1,6 +1,6 @@
 import React from 'react';
 import { Car, Phone, Mail, MapPin, Clock } from 'lucide-react';
-import brabazonLogo from '../assets/Brabazon-cars-logo.png';
+import brabazonLogo from '../assets/Brabazon cars logo-1.png';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
