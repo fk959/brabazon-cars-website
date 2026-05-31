@@ -13,7 +13,7 @@ const Fleet = () => {
       capacity: "Up to 5 passengers",
       description: "Perfect for business trips or small groups. Comfortable, professional, and efficient.",
       image: corollaImg,
-      altText: "Toyota Corolla 5-seater premium saloon car - professional private hire vehicle",
+      altText: "Executive saloon car for Bristol business travel and airport transfers - professional private hire vehicle",
       features: ["Executive comfort", "Professional service", "Airport transfers"]
     },
     {
@@ -21,7 +21,7 @@ const Fleet = () => {
       capacity: "Up to 7 passengers",
       description: "Spacious and versatile for families or medium groups with extra luggage space.",
       image: galaxyImg,
-      altText: "Ford Galaxy 7-seater comfort SUV - spacious family vehicle for private hire",
+      altText: "Spacious 7-seater comfort SUV for family airport taxi runs from Bristol and private hire",
       features: ["Extra luggage space", "Family-friendly", "All-weather capability"]
     },
     {
@@ -29,7 +29,7 @@ const Fleet = () => {
       capacity: "Up to 9 passengers",
       description: "Ideal for large groups, corporate events, or extended family travel with maximum comfort.",
       image: vivaroImg,
-      altText: "Vauxhall Vivaro 9-seater touring minivan - large group transportation vehicle",
+      altText: "9-seater touring minivan for large group private hire and corporate events, chauffeur service in Bristol",
       features: ["Large groups", "Corporate events", "Maximum comfort"]
     }
   ];

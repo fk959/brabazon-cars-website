@@ -6,18 +6,21 @@ const Services = () => {
     {
       icon: <Plane className="h-8 w-8" />,
       title: "Airport Transfers",
-      description: "Stress-free travel to and from any UK airport. We offer punctual, reliable service 24/7 for both advance and short-notice bookings.",
+      // Added specific airport names and "taxi"
+      description: "Stress-free taxi travel to and from Heathrow, Gatwick, Stansted, Bristol Airport and all UK terminals. Punctual, reliable service 24/7.",
       featured: true
     },
     {
       icon: <MapPin className="h-8 w-8" />,
       title: "Private UK Tours",
-      description: "Discover the UK with your own private driver. We offer bespoke tours to landmarks, cities, and attractions across the country, tailored to your schedule."
+      // Added specific locations
+      description: "Discover the Cotswolds, Bath, or London with your own private chauffeur. Bespoke tours tailored to your schedule."
     },
     {
       icon: <Navigation className="h-8 w-8" />,
       title: "Local Journeys",
-      description: "Comfortable and dependable private hire for all your local travel needs in and around Bristol. A premium alternative for your important journeys."
+      // Added "executive" and "chauffeur" keywords
+      description: "Comfortable and dependable private hire for all your local Bristol travel needs. A premium executive alternative for important journeys."
     }
   ];
 
