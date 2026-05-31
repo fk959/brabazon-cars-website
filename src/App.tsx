@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react'; // Removed unused React import
 import Header from './components/Header';
 import Hero from './components/Hero';
 import Services from './components/Services';
@@ -7,6 +7,7 @@ import Fleet from './components/Fleet';
 import Testimonials from './components/Testimonials';
 import ContactForm from './components/ContactForm';
 import Footer from './components/Footer';
+import FloatingContact from './components/FloatingContact'; // <-- 1. Imported the new component
 
 function App() {
   useEffect(() => {
@@ -34,7 +35,8 @@ function App() {
   }, []);
 
   return (
-    <div className="min-h-screen">
+    // 2. Added pb-14 for mobile to prevent footer overlap, md:pb-0 resets it for desktop
+    <div className="min-h-screen pb-14 md:pb-0">
       <Header />
       <Hero />
       <Services />
@@ -43,6 +45,9 @@ function App() {
       <Testimonials />
       <ContactForm />
       <Footer />
+      
+      {/* 3. Added the CTA component so it sits on top of everything */}
+      <FloatingContact />
     </div>
   );
 }
