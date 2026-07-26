@@ -4,32 +4,32 @@ import { Users } from 'lucide-react';
 // Fix the import paths to correctly reference assets in the root directory
 import corollaImg from '../assets/Corolla.jpg';
 import galaxyImg from '../assets/Galaxy.jpg';
-import vivaroImg from '../assets/Vivaro.jpg';
+import minivanImg from '../assets/Hyundai i800 Brabazon.png';
 
 const Fleet = () => {
   const vehicles = [
     {
-      name: "5-Seater Premium Saloon",
-      capacity: "Up to 5 passengers",
+      name: "Executive Saloon",
+      capacity: "Up to 4 passengers",
       description: "Perfect for business trips or small groups. Comfortable, professional, and efficient.",
       image: corollaImg,
       altText: "Executive saloon car for Bristol business travel and airport transfers - professional private hire vehicle",
       features: ["Executive comfort", "Professional service", "Airport transfers"]
     },
     {
-      name: "7-Seater Comfort SUV",
-      capacity: "Up to 7 passengers",
+      name: "Executive SUV",
+      capacity: "Up to 6 passengers",
       description: "Spacious and versatile for families or medium groups with extra luggage space.",
       image: galaxyImg,
-      altText: "Spacious 7-seater comfort SUV for family airport taxi runs from Bristol and private hire",
+      altText: "Spacious comfort SUV for family airport taxi runs from Bristol and private hire",
       features: ["Extra luggage space", "Family-friendly", "All-weather capability"]
     },
     {
-      name: "9-Seater Touring Minivan",
-      capacity: "Up to 9 passengers",
+      name: "8-Seater Touring Minivan",
+      capacity: "Up to 7 passengers",
       description: "Ideal for large groups, corporate events, or extended family travel with maximum comfort.",
-      image: vivaroImg,
-      altText: "9-seater touring minivan for large group private hire and corporate events, chauffeur service in Bristol",
+      image: minivanImg,
+      altText: "8-seater touring minivan for large group private hire and corporate events, chauffeur service in Bristol",
       features: ["Large groups", "Corporate events", "Maximum comfort"]
     }
   ];

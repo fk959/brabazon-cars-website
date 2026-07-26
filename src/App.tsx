@@ -1,4 +1,5 @@
-import { useEffect } from 'react'; // Removed unused React import
+import { useEffect } from 'react';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import Services from './components/Services';
@@ -7,9 +8,20 @@ import Fleet from './components/Fleet';
 import Testimonials from './components/Testimonials';
 import ContactForm from './components/ContactForm';
 import Footer from './components/Footer';
-import FloatingContact from './components/FloatingContact'; // <-- 1. Imported the new component
+import FloatingContact from './components/FloatingContact';
+import RouteLandingPage from './pages/RouteLandingPage';
 
-function App() {
+function ScrollToTop() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return null;
+}
+
+function HomePage() {
   useEffect(() => {
     // Intersection Observer for animations
     const observerOptions = {
@@ -25,7 +37,6 @@ function App() {
       });
     }, observerOptions);
 
-    // Observe all animation elements
     const animatedElements = document.querySelectorAll('.fade-in-up, .fade-in-left, .fade-in-right');
     animatedElements.forEach(el => observer.observe(el));
 
@@ -35,7 +46,6 @@ function App() {
   }, []);
 
   return (
-    // 2. Added pb-14 for mobile to prevent footer overlap, md:pb-0 resets it for desktop
     <div className="min-h-screen pb-14 md:pb-0">
       <Header />
       <Hero />
@@ -45,10 +55,21 @@ function App() {
       <Testimonials />
       <ContactForm />
       <Footer />
-      
-      {/* 3. Added the CTA component so it sits on top of everything */}
       <FloatingContact />
     </div>
+  );
+}
+
+function App() {
+  return (
+    <>
+      <ScrollToTop />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/transfers/:slug" element={<RouteLandingPage />} />
+        <Route path="*" element={<HomePage />} />
+      </Routes>
+    </>
   );
 }
 

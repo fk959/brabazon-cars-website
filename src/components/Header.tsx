@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import brabazonLogo from '../assets/Brabazon cars logo-1.png';
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
-      // Trigger the compact state when user scrolls past 100px
       setIsScrolled(window.scrollY > 100);
     };
 
@@ -17,10 +19,22 @@ const Header = () => {
   }, []);
 
   const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-      setIsMobileMenuOpen(false);
+    setIsMobileMenuOpen(false);
+    if (location.pathname !== '/') {
+      navigate('/', { replace: false });
+      setTimeout(() => {
+        const element = document.getElementById(sectionId);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        } else {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+      }, 150);
+    } else {
+      const element = document.getElementById(sectionId);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
     }
   };
 
@@ -35,7 +49,7 @@ const Header = () => {
           isScrolled ? 'h-16' : 'h-20 md:h-24'
         }`}>
           {/* Logo Section */}
-          <div className="flex items-center space-x-3 relative z-10">
+          <Link to="/" className="flex items-center space-x-3 relative z-10 group">
             <img 
               src={brabazonLogo} 
               alt="Brabazon Cars Logo"
@@ -47,12 +61,12 @@ const Header = () => {
                 mixBlendMode: 'normal'
               }}
             />
-            <span className={`font-display font-bold text-white transition-all duration-500 ease-in-out ${
+            <span className={`font-display font-bold text-white transition-all duration-500 ease-in-out group-hover:text-primary-400 ${
               isScrolled ? 'text-2xl' : 'text-2xl md:text-3xl'
             }`}>
               Brabazon Cars
             </span>
-          </div>
+          </Link>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
