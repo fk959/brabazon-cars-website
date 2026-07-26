@@ -302,24 +302,6 @@ const ContactForm = () => {
         </div>
       </div>
 
-      <style jsx>{`
-        .typing-placeholder {
-          font-family: inherit;
-          font-size: inherit;
-          line-height: inherit;
-        }
-        
-        .typing-cursor {
-          color: #0ea5e9;
-          font-weight: bold;
-          animation: blink 1s infinite;
-        }
-        
-        @keyframes blink {
-          0%, 50% { opacity: 1; }
-          51%, 100% { opacity: 0; }
-        }
-      `}</style>
     </section>
   );
 };
